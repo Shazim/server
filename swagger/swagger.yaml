@@ -1,0 +1,80 @@
+---
+openapi: 3.0.1
+info:
+  title: Loop API
+  version: v1
+paths:
+  "/api/users":
+    post:
+      summary: SignUp
+      tags:
+      - Authentication
+      security: []
+      parameters: []
+      responses:
+        '200':
+          description: SignUp Successfully
+          content: {}
+        '404':
+          description: Api Not Found
+          content: {}
+        '400':
+          description: Bad Request
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+                  required:
+                  - email
+                  - password
+                required:
+                - user
+  "/api/oauth/token":
+    post:
+      summary: SignIn
+      tags:
+      - Authentication
+      security: []
+      parameters: []
+      responses:
+        '200':
+          description: Access Token
+          content: {}
+        '404':
+          description: Api Not Found
+          content: {}
+        '400':
+          description: Bad Request
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                grant_type:
+                  type: string
+                  example: password
+              required:
+              - email
+              - password
+              - grant_type
+servers:
+- url: http://localhost:3000
+  variables:
+    defaultHost:
+      default: localhost:3000

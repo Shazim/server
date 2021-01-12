@@ -10,6 +10,15 @@ module LoopServer
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    
+    config.autoload_paths << "#{Rails.root}/lib"
+
+    config.middleware.insert_before(0, Rack::Cors) do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: %i[get post put options delete patch]
+      end
+    end
 
     # Configuration for the application, engines, and railties goes here.
     #

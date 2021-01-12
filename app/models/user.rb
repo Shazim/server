@@ -4,5 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :trackable
   
   #Relations with other tables
-  has_one :profile       
+  has_one :profile
+         
+  # Call Backs
+  after_create :init_profile
+
+  def init_profile
+    self.create_profile!
+  end
 end
