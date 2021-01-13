@@ -1,11 +1,11 @@
 module Api
   module Users
-    class RegistrationsController < Devise::RegistrationsController 
+    class RegistrationsController < Devise::RegistrationsController
       skip_before_action :verify_authenticity_token
       include Response
       include CustomException
       handle_api_errors
-      
+
       def create
         build_resource(sign_up_params)
         resource.save
