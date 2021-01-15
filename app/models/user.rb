@@ -5,7 +5,21 @@ class User < ApplicationRecord
 
   # Relations with other tables
   has_one :profile
-
+  
+  has_many :user_skills
+  has_many :skills, through: :user_skills
+  
+  has_many :user_genres
+  has_many :genres, through: :user_genres
+  
+  has_many :user_expertises
+  has_many :expertises, through: :user_expertises
+  
+  has_many :social_links
+  
+  has_many :user_locations
+  
+  has_many :user_trips
   # Call Backs
   after_create :init_profile
 
