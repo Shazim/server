@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     use_doorkeeper
 
     devise_for :users, controllers: { registrations: 'api/users/registrations' }
-
+    
+    resource :profile
   end
 end
