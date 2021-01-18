@@ -1,7 +1,7 @@
 module Api
-  class ProfilesController < LoopApiController
+  class ProfilesController < ApiController
     def update
-      render json: {'something'}
-    end    
+      render json: { message: 'something' }
+    end
   end
 end

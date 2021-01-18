@@ -1,5 +1,5 @@
 module Api
-  class LoopApiController < ActionController::API
+  class ApiController < ActionController::API
     before_action :doorkeeper_authorize!
     respond_to :json
 
